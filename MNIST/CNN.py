@@ -27,7 +27,7 @@ L2 = tf.reshape(L2, [-1,7*7*64])
 
 
 W3 = tf.get_variable("W2", shape=[7*7*64, 10],
-                     initializer=tf.contrib.layers.xavier_initializer())
+                     initializer=tf.contrib.layers.xavier_initializer())  ## 가중치 초기값 .. Relu는 He초기값씀.
 b = tf.Variable(tf.random_normal([10]))
 hypothesis = tf.matmul(L2, W3) + b
 
@@ -41,7 +41,7 @@ is_correct = tf.equal(tf.arg_max(hypothesis, 1), tf.arg_max(Y, 1))
 
 accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
 
-training_epochs = 15=
+training_epochs = 15
 batch_size = 100
 
 sess = tf.Session()
